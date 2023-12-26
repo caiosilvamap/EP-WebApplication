@@ -1,0 +1,90 @@
+﻿@using SistemaCadastroProjeto.ViewModels;
+
+@model List<UsuarioViewModel>
+
+<div class="col-lg-12">
+<div class="container">
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Listagem De Usuários</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="tabela_usuario" class="d-table">
+                    <div class="row text">
+                        <div class="col-sm-12 col-md-6 mb-3 mt-3">
+                            <div class="button-container btn btn-primary rounded-pill mb-4 mb-lg-0 ms-1">
+                                <a asp-controller="Usuario"  asp-action="Cadastrar">
+                                    <i class="bi bi-plus-circle-fill" style="font-size:15px; color:white"></i>
+                                    <span style="color:white">Adicionar</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 mb-3 mt-3 text-end">
+                            <div class="d-inline-flex  ">
+                                <label class="form-label" for="search">Pesquisa:</label>
+                                <input type="search" id="search" class="form-control form-control-sm ms-2 me-1 w-100"/>                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <hr/>
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 32px;">Id</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 50px;">Gerência</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 300px;">Nome</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 250px;">Cargo</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 150px;">Telefone</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 150px;">Email</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 20px;">Opções</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+
+                                        foreach (UsuarioViewModel usuario in Model)
+                                        {
+                                            <tr class="odd">
+                                                <th scope="row">@usuario.Id</th>
+                                                <td class="sorting_1">@usuario.IdGerenciaNavigation.Nome</td>
+                                                <td class="sorting_1">@usuario.Nome</td>
+                                                <td class="sorting_1">@usuario.IdTipoCargoNavigation.Cargo</td>
+                                                <td class="sorting_1">@usuario.Telefone</td>
+                                                <td class="sorting_1">@usuario.Email</td>
+                                                <td class="sorting_1">
+                                                    <div class="btn">
+                                                        <a role="button" class="bi bi-pencil-square" style="font-size:17px; color:blue" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+

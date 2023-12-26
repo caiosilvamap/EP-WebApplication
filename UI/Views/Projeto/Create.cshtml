@@ -1,0 +1,115 @@
+﻿@model App.ViewModels.ProjetoViewModel
+
+<div class="container p-5">
+
+    <form asp-controller="Projeto" asp-action="Create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Projeto" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Cadastrar</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-5">
+
+            <div class="col-12">
+                <label for="Nome" class="col-form-label-lg">Nome</label>
+                <input id="Nome" class="form-control" type="text" asp-for="Nome" placeholder="Digite o Nome do Estudo" required>
+                <div class="invalid-feedback">
+                    Você deve informar o Nome do Projeto.
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="Tema" class="col-form-label-lg">Tema</label>
+                <select class="form-select" asp-for="IdTema" id="tema" asp-items="@(new SelectList(ViewBag.Tema, "Id", "Nome"))" class="form-group" required><option></option></select>
+            </div>
+
+            <div class="col-4">
+                <label for="Objetivo" class="col-form-label-lg">Objetivo</label>
+                <select class="form-select" asp-for="IdObjetivo" id="objetivo" asp-items="@(new SelectList(ViewBag.Objetivo, "Id", "Nome"))" class="form-group" required><option></option></select>
+            </div>
+
+            <div class="col-4">
+                <label for="Financiamento" class="col-form-label-lg">Programa de Financiamento</label>
+                <select class="form-select" asp-for="IdFinanciamento" id="financiamento" asp-items="@(new SelectList(ViewBag.Financiamento, "Id", "Tipo"))" class="form-group"><option></option></select>
+            </div>
+
+            <div class="col-4">
+                <label for="IdLTP" class="col-form-label-lg">LTP</label>
+                <select class="form-select" asp-for="IdLTP" id="ltp" asp-items="@(new SelectList(ViewBag.Usuario, "Id", "Nome"))" class="form-group" required><option></option></select>
+            </div>
+
+            <div class="col-4">
+                <label for="Cliente" class="col-form-label-lg">Cliente</label>
+                <select class="form-select" asp-for="IdCliente" id="cliente" asp-items="@(new SelectList(ViewBag.Usuario, "Id", "Nome" ))" class="form-group" required><option></option></select>
+            </div>
+
+            <div class="col-4">
+                <label for="Apoio" class="col-form-label-lg">Equipe de Apoio</label>
+                <select class="form-select" id="apoio" multiple="multiple" asp-for="IdApoio" asp-items="@(new SelectList(ViewBag.Usuario, "Id", "Nome"))" class="form-group"><option></option></select>
+            </div>
+
+            <div class="mb-3 col">
+                <label for="arquivo" class="col-form-label-lg">TAP</label>
+                <input class="form-control" type="file" id="arquivo" asp-for="LstArquivo">
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-md btn-primary">Adicionar</button>
+        </div>
+
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        (() => {
+            'use strict'
+
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })
+
+        $(document).ready(function () {
+            $('#tema, #objetivo, #ltp, #cliente, #financiamento').select2({
+                placeholder: "Seleciona uma Opção",
+                allowClear: true
+            });
+        });
+
+        $(document).ready(function () {
+            $('#apoio').select2({
+                placeholder: "Selecione a Equipe de Apoio",
+                closeOnSelect: false,
+                allowClear: true
+            });
+        });
+
+
+    </script>
+
+}
+
+
+
+

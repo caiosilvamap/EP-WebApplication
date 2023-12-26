@@ -1,0 +1,88 @@
+﻿@model App.ViewModels.UsuarioViewModel
+
+
+<div class="container p-5">
+
+    <form asp-controller="Usuario" asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Usuario" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Cadastrar</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-5">
+
+            <div class="col-12 mb-2">
+                <label for="Nome" class="col-form-label col-form-label-lg">Nome</label>
+                <input type="text" id="nome" asp-for="Nome" class="form-control form-control-lg" placeholder="Digite o Nome do Usuário" required>
+            </div>
+
+            <div class="col-3 mb-2">
+                <label for="Telefone" class="col-form-label col-form-label-lg">Telefone</label>
+                <input id="telefone" type="number" asp-for="Telefone" class="form-control" placeholder="Digite o Telefone do Usuário" required>
+            </div>
+          
+            <div class="col-4 mb-2">
+                <label for="Email" class="col-form-label col-form-label-lg">Email</label>
+                <input id="email" type="email" asp-for="Email" class="form-control" placeholder="Digite o Email do Usuário" required>
+            </div>
+
+            <div class="col-3 mb-2">
+                <label for="IdGerencia" class="col-form-label col-form-label-lg">Gerência</label>
+                <select id="gerencia" class="form-select" asp-for="IdGerencia" asp-items="@(new SelectList(ViewBag.gerencia, "Id", "Nome" ))" required><option></option></select>
+            </div>
+
+            <div class="col-3 mb-2">
+                <label for="Cargo" class="col-form-label col-form-label-lg">Cargo</label>
+                <select id="cargo" class="form-select" asp-for="IdTipoCargo" asp-items="@(new SelectList(ViewBag.cargo, "Id", "Cargo" ))" required><option></option></select>
+            </div>
+
+     
+
+            <div>
+                <button type="submit" class="btn btn-md btn-primary">Adicionar</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        (() => {
+            'use strict'
+
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })
+
+        $(document).ready(function () {
+            $('#gerencia, #cargo').select2({
+                placeholder: "Seleciona uma Opção",
+                allowClear: true
+            });
+        });
+
+    </script>
+
+}

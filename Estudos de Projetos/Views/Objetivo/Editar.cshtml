@@ -1,0 +1,38 @@
+﻿@model SistemaCadastroProjeto.ViewModels.ObjetivoViewModel
+
+
+<div class="container p-5">
+
+    <form asp-controller="Objetivo" asp-action="Alterar" method="post">
+
+        <input type="hidden" asp-for="Id"/>
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Objetivo" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Editar</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 my-4 ">
+            <label for="Nome" class="col-form-label col-form-label-lg">Nome do Objetivo</label>
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o Objetivo" required>
+        </div>
+
+        <div class="form-check form-switch mb-3 my-4 py-2">
+            <input class="form-check-input" type="checkbox" asp-for="Ativo" >
+            <label class="form-check-label" for="Ativo">Ativo</label>
+        </div>
+
+        <div class="mb-3 my-4 for-">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+
+    </form>
+
+</div>

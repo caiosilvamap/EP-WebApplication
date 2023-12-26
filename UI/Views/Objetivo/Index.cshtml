@@ -1,0 +1,54 @@
+﻿@using App.ViewModels;
+
+@model List<ObjetivoViewModel>
+
+<div class="container p-5">
+
+    <div class="row mb-3 g-5">
+        <div class="title text-center col-12">
+            <h1>Objetivo</h1>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="bi bi-plus-circle-fill" style="font-size:50px; color:blue" asp-controller="Objetivo" asp-action="Create" role="button"></a>
+        </div>
+    </div>
+
+    <div class="row mb-3 g-5 table-responsive">
+
+        <table class="table table-hover table-striped table-bordered table-sm align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="col-1">Id</th>
+                    <th scope="col" class="col-9">Nome</th>
+                    <th scope="col" class="col-1">Ativo</th>
+                    <th scope="col" class="col-1">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (ObjetivoViewModel objetivo in Model)
+                    {
+                        <tr>
+                            <th scope="row">@objetivo.Id</th>
+                            <td>@objetivo.Nome</td>
+                            <td>@objetivo.Ativo</td>
+                            <td>
+                                <div class="btn mx-3">
+                                    <a role="button" class="bi bi-pencil-square" style="font-size:17px; color:blue" asp-route-id="@objetivo.Id" asp-controller="Objetivo" asp-action="Edit"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

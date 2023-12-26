@@ -1,0 +1,92 @@
+Create Table Tema(
+
+	Id_Tema int IDENTITY(1,1),
+
+	Nome varchar(200) not null,
+
+	Ativo int default 1 not null,
+
+		Constraint Id_Tema_pk
+
+			Primary key(Id_Tema)
+);
+
+	Create Table Objetivo(
+
+		Id_Objetivo int IDENTITY(1,1),
+
+		Nome varchar(200) not null,
+
+		Ativo int default 1 not null,
+
+			Constraint Id_Objetivo_pk
+
+				Primary key(Id_Objetivo)
+	);
+
+		Create Table Financiamento(
+
+			Id_Financiamento int IDENTITY(1,1),
+
+			Tipo varchar(150),
+
+				Constraint Id_Financiamento_pk
+
+					Primary key(Id_Financiamento)
+		);
+
+		 Create Table GerenciaGeral(
+			
+				Id_GerenciaGeral int IDENTITY (1,1),
+
+				Nome varchar (150) not null,
+
+				Ativo int default 1 not null,
+
+			
+					Constraint Id_GerenciaGeral_pk
+					
+						Primary key(Id_GerenciaGeral)		
+		);
+
+			Create Table Gerencia(
+				
+				Id_Gerencia int IDENTITY (1,1),
+
+				Id_GerenciaGeral int not null,
+
+				Nome varchar (150) not null,
+
+				Ativo int default 1 not null,
+
+					Constraint Id_Gerencia_pk
+					
+						Primary key(Id_Gerencia),
+
+					Constraint Id_GerenciaGeral_fk
+
+						Foreign key(Id_GerenciaGeral) references GerenciaGeral(Id_GerenciaGeral)				
+			);
+
+			Create Table Usuario(
+				
+				Id_Usuario int IDENTITY (1,1),
+
+				Id_Gerencia int not null,
+
+				Nome varchar (200) not null,
+
+				Cargo varchar (100) not null,
+
+				Telefone varchar (100) not null,
+
+				Email varchar (100),
+
+					Constraint Id_Usuario_pk
+						
+						Primary key (Id_Usuario),
+
+					Constraint Id_Gerencia_fk
+						
+						Foreign key(Id_Gerencia) references Gerencia(Id_Gerencia)			
+			);

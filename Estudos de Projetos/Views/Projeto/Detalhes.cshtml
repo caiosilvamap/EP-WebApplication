@@ -1,0 +1,87 @@
+﻿@model SistemaCadastroProjeto.ViewModels.ProjetoViewModel
+
+
+
+<div class="container p-5">
+
+    <form asp-controller="Projeto">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Projeto" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Mais Detalhes</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-5">
+
+            <div class="col-3">
+                <label for="Codigo" class="col-form-label-lg ">Código</label>
+                <input id="Codigo" class="form-control form-control-lg" asp-for="Codigo" readonly>
+            </div>
+
+            <div class="col-3">
+                <label for="DataAbertura" class="col-form-label-lg ">Data Abertura</label>
+                <input id="DataAbertura" class="form-control form-control-lg" asp-for="DataAbertura" readonly>
+            </div>
+
+            <div class="col-12">
+                <label for="Nome" class="col-form-label-lg">Nome</label>
+                <input id="Nome" class="form-control" type="text" asp-for="Nome" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="Tema" class="col-form-label-lg">Tema</label>
+                <input id="Tema" class="form-control" asp-for="IdTemaNavigation.Nome" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="Objetivo" class="col-form-label-lg">Objetivo</label>
+                <input id="Tema" class="form-control" asp-for="IdObjetivoNavigation.Nome" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="Financiamento" class="col-form-label-lg">Programa de Financiamento</label>
+                <input id="Tema" class="form-control" asp-for="IdFinanciamentoNavigation.Tipo" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="IdLTP" class="col-form-label-lg">LTP</label>
+                <input id="Tema" class="form-control" asp-for="NomeLTP" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="Cliente" class="col-form-label-lg">Cliente</label>
+                <input class="form-control" asp-for="NomeCliente" class="form-control" readonly>
+            </div>
+
+            <div class="col-4">
+                <label for="Apoio" class="col-form-label-lg">Equipe de Apoio</label>
+                <select class="form-select" id="apoio" multiple="multiple" asp-for="IdApoio" asp-items="@(new SelectList(ViewBag.Usuario, "Id", "Nome"))" class="form-group" disabled></select>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+
+        $(document).ready(function () {
+            $('#apoio').select2();
+        });
+
+    </script>
+
+}
+
+

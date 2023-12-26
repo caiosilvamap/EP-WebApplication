@@ -1,0 +1,69 @@
+﻿@using SistemaCadastroProjeto.ViewModels;
+
+@model List<ProjetoViewModel>
+
+
+
+<div class="container p-5">
+
+    <div class="row mb-3 g-5">
+        <div class="title text-center col-12">
+            <h1>Listagem De Projetos</h1>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="bi bi-plus-circle-fill" style="font-size:50px; color:blue" asp-controller="Projeto" asp-action="Cadastrar" role="button"></a>
+        </div>
+    </div>
+
+    <div class="row mb-3 g-5 table-responsive">
+
+        <table class="table table-hover table-striped table-bordered table-sm align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="col-1">Id</th>
+                    <th scope="col" class="col-1">Codigo</th>
+                    <th scope="col" class="col-4">Nome</th>
+                    <th scope="col" class="col-3">LTP</th>
+                    <th scope="col" class="col-3">Cliente</th>
+                    @*<th scope="col">Apoio</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Objetivo</th>
+                    <th scope="col">Financiamento</th>*@
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (ProjetoViewModel projeto in Model)
+                    {
+                        <tr>
+                            <th scope="row">@projeto.Id</th>
+                            <td>@projeto.Codigo</td>
+                            <td>@projeto.Nome</td>
+                            <td>@projeto.NomeLTP</td>
+                            <td>@projeto.NomeCliente</td>
+                            @*<td>@string.Join(", ", projeto.NomeApoio)</td>
+                            <td>@projeto.IdTemaNavigation.Nome</td>
+                            <td>@projeto.IdObjetivoNavigation.Nome</td>
+                            <td>@projeto.IdFinanciamentoNavigation.Tipo</td>*@
+                            <td>
+                                <div class="d-grid  d-md-block ">
+                                    <a role="button" class="bi bi-pencil-square" style="font-size:17px; color:blue" asp-route-id="@projeto.Id" asp-controller="Projeto" asp-action="Editar"></a>
+                                    <a role="button" class="bi bi-three-dots" style="font-size:17px; color:blue" asp-route-id="@projeto.Id" asp-controller="Projeto" asp-action="Detalhes"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

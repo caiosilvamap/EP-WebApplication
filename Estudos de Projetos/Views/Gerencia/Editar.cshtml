@@ -1,0 +1,78 @@
+﻿@model SistemaCadastroProjeto.ViewModels.GerenciaViewModel
+
+
+<div class="container p-5">
+
+    <form asp-controller="Gerencia" asp-action="Alterar" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Gerencia" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Editar</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-5">
+
+            <div class="col-12 mb-2">
+                <label for="nome" class="col-form-label col-form-label-lg">Nome</label>
+                <input type="text" asp-for="Nome" class="form-control" placeholder="Digite a Gerencia" required>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label for="IdGerenciaGeralNavigation" class="form-label">Gerência Geral</label>
+                <select asp-for="IdGerenciaGeral" id="gg" asp-items="@(new SelectList(ViewBag.gerenciaGeral, "Id", "Nome" ))" class="form-select" required><option></option></select>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input id="ativo" class="form-check-input" type="checkbox" asp-for="Ativo" checked>
+                <label class="form-check-label" for="ativo">Ativo</label>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-md btn-primary">Salvar</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        (() => {
+            'use strict'
+
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })
+
+        $(document).ready(function () {
+            $('#gg').select2({
+                placeholder: "Seleciona uma Opção",
+                allowClear: true
+            });
+        });
+
+    </script>
+
+}

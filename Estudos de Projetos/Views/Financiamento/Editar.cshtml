@@ -1,0 +1,34 @@
+﻿@model SistemaCadastroProjeto.ViewModels.FinanciamentoViewModel
+
+<div class="container p-5">
+
+    <form asp-controller="Financiamento" asp-action="Alterar" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <a class="bi bi-arrow-bar-left" style="font-size:40px; color:blue" asp-controller="Financiamento" asp-action="Index" role="button"></a>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Editar</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3 g-5">
+            <div class="col mb-2">
+                <label for="Nome" class="col-form-label col-form-label-lg">Nome</label>
+                <input type="text" asp-for="Tipo" class="form-control" placeholder="Digite o Financiamento" required>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-md btn-primary">Salvar</button>
+        </div>
+
+    </form>
+
+</div>

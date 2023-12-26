@@ -1,0 +1,8 @@
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.csproj.AssemblyReference.cache
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.AssemblyInfoInputs.cache
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.AssemblyInfo.cs
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.csproj.CoreCompileInputs.cache
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.RazorAssemblyInfo.cache
+C:\Users\csp0812\Desktop\EP-WebApplication\Estudos de Projetos\obj\Debug\net5.0\Estudos de Projetos.RazorAssemblyInfo.cs
